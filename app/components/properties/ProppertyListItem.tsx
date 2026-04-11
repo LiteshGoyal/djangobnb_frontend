@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { PropertyType } from "./PropertyList";
-
+import { useRouter } from "next/navigation";
 interface PropertyProps{
     property : PropertyType;
     
@@ -9,8 +9,10 @@ interface PropertyProps{
 const PropertyListItem:React.FC<PropertyProps> =({
     property
 }) =>{
+    const router = useRouter();
+
     return (
-        <div className="cursor-pointer mx-2">
+        <div className="cursor-pointer mx-2" onClick={()=> router.push(`/properties/${property.id}`)}>
             <div className=" relative overflow-hidden aspect-square rounded-xl">
                 <Image fill src={property.image_url} alt="Beach" sizes="(max-width:768px) 768px, (max-width: 1200px): 768px, 768px" className="hover:scale-110 object-cover transition h-full w-full"/>
             </div>
