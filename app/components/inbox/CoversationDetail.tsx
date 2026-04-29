@@ -22,7 +22,7 @@ const CoversationDetail: React.FC<ConversationDetailProps> = ({
   userId,
   messages
 }) => {
-  const messagesDiv = useRef(null);
+  const messagesDiv = useRef<HTMLDivElement>(null)
   const [newMessage, setNewMessage] = useState("");
   const [realTimeMessages, setRealTimeMessages] = useState<MessageType[]>([]);
 //   const [oldMessages, setOldMessages] = useState<MessageType[]>([]);
