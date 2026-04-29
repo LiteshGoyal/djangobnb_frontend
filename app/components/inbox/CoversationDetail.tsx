@@ -31,7 +31,7 @@ const CoversationDetail: React.FC<ConversationDetailProps> = ({
   const otherUser = conversation.users?.find((user) => user.id != userId);
 
   const { sendJsonMessage, lastJsonMessage, readyState } = useWebSocket(
-    `ws://${process.env.NEXT_PUBLIC_API_HOST}/ws/${conversation.id}/?token=${token}`,
+    `wss://${process.env.NEXT_PUBLIC_API_HOST}/ws/${conversation.id}/?token=${token}`,
     {
       share: false,
       shouldReconnect: () => true,
