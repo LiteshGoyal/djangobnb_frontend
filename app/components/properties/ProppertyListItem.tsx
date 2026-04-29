@@ -17,7 +17,7 @@ const PropertyListItem:React.FC<PropertyProps> =({
     return (
         <div className="cursor-pointer mx-2" onClick={()=> router.push(`/properties/${property.id}`)}>
             <div className=" relative overflow-hidden aspect-square rounded-xl">
-                <Image fill src={`${process.env.NEXT_PUBLIC_API_URL}${property.image_url}`} alt="Beach" sizes="(max-width:768px) 768px, (max-width: 1200px): 768px, 768px" className="hover:scale-110 object-cover transition h-full w-full"/>
+                <Image fill src={property.image_url} alt="Beach" sizes="(max-width:768px) 768px, (max-width: 1200px): 768px, 768px" className="hover:scale-110 object-cover transition h-full w-full"/>
                 {markFavorite && (
                     <FavoriteButton id={property.id} 
                     is_favorite={property.is_favorite}
