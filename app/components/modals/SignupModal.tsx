@@ -13,6 +13,7 @@ const SignupModal = () => {
   const signupModal = useSignupModal();
 
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
 
@@ -21,6 +22,7 @@ const SignupModal = () => {
   const submitSignup = async () => {
     const formData = {
         email : email,
+        name : name,
         password1 : password1,
         password2 : password2
     }
@@ -42,7 +44,10 @@ const SignupModal = () => {
   const content = (
     <>
       <h2 className="mb-6 text-2xl">Welcome, Please SignUp</h2>
-      <form action={submitSignup} className="space-y-4">
+      <form onSubmit={(e) => {
+  e.preventDefault();
+  submitSignup();
+}} className="space-y-4">
         <input
           onChange={(e) => setEmail(e.target.value)}
           type="email"
@@ -51,6 +56,14 @@ const SignupModal = () => {
           id=""
           placeholder="Your Email Address"
         />
+        <input
+          onChange={(e) => setName(e.target.value)}
+          type="text"
+          className="w-full px-4 h-[54px] border border-gray-100 rounded-xl"
+          name=""
+          id=""
+          placeholder="Your name"
+        />
 
         <input
           onChange={(e) => setPassword1(e.target.value)}
@@ -58,7 +71,7 @@ const SignupModal = () => {
           className="w-full px-4 h-[54px] border border-gray-100 rounded-xl"
           name=""
           id=""
-          placeholder="Your PassWord "
+          placeholder="Your password "
         />
 
         <input
@@ -67,7 +80,7 @@ const SignupModal = () => {
           className="w-full px-4 h-[54px] border border-gray-100 rounded-xl"
           name=""
           id=""
-          placeholder="Repeat PassWord "
+          placeholder="Repeat password "
         />
 
         {errors.map((error, index) => {
